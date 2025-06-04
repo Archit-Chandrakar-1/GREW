@@ -4,8 +4,8 @@
  */
 
 // Mock API key (in a real app, this would be securely stored)
-const API_KEY = 'XOS7QI203FTLD0NC';
-const BASE_URL = 'https://api.twelvedata.com';
+const API_KEY = 'd105hehr01qhkqr80s5gd105hehr01qhkqr80s60';
+const BASE_URL = 'https://finnhub.io/api/v1';
 
 // Fetch stock data from Alpha Vantage API
 async function fetchStockData(symbol) {
