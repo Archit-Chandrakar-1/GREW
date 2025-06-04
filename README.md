@@ -6,8 +6,8 @@ Responsive Stock Tracker Dashboard
 
 ## 🌐 Live Demo & Repository
 
-- 🔗 **Live Site**: [https://your-live-link.com]https://grew-eight.vercel.app)  
-- 🛠 **GitHub Repo**: [https://github.com/your-username/stock-tracker-dashboard](https://github.com/your-username/stock-tracker-dashboard)
+- 🔗 **Live Site**: https://grew-eight.vercel.app)  
+- 🛠 **GitHub Repo**: https://github.com/Archit-Chandrakar-1/GREW/edit/main/README.md
 
 ---
 
