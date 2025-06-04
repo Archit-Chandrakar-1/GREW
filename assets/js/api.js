@@ -1,90 +1,109 @@
-// api.js – Fully mocked version for reliable deployment
+/**
+ * API functions for the Grew Stock Tracker
+ * Note: This uses mock data as Alpha Vantage API requires a real API key
+ */
 
-const API_KEY = 'demo'; // Not used in mocks
-const BASE_URL = 'https://www.alphavantage.co/query'; // Not used
+// Mock API key (in a real app, this would be securely stored)
+const API_KEY = 'XOS7QI203FTLD0NC';
+const BASE_URL = 'https://api.twelvedata.com';
 
-// Mock trending stocks
-const trendingStocks = [
-  { symbol: "AAPL", name: "Apple Inc." },
-  { symbol: "MSFT", name: "Microsoft Corporation" },
-  { symbol: "GOOGL", name: "Alphabet Inc." },
-  { symbol: "AMZN", name: "Amazon.com Inc." },
-  { symbol: "TSLA", name: "Tesla Inc." },
-  { symbol: "NVDA", name: "NVIDIA Corporation" },
-  { symbol: "META", name: "Meta Platforms Inc." },
-  { symbol: "NFLX", name: "Netflix Inc." },
-  { symbol: "BABA", name: "Alibaba Group" },
-  { symbol: "ADBE", name: "Adobe Inc." }
-];
-
-// Generate random current stock data
-function generateRandomStockData(symbol) {
-  const price = (Math.random() * 200 + 100).toFixed(2);
-  const change = (Math.random() * 10 - 5).toFixed(2);
-  const volume = Math.floor(Math.random() * 10000000);
-
-  return {
-    symbol,
-    name: trendingStocks.find(s => s.symbol === symbol)?.name || "Unknown Company",
-    price,
-    change,
-    volume,
-    historicalData: generateHistoricalData(price)
-  };
-}
-
-// Generate mock historical data
-function generateHistoricalData(currentPrice) {
-  const data = [];
-  let price = parseFloat(currentPrice);
-
-  for (let i = 30; i >= 0; i--) {
-    const date = new Date();
-    date.setDate(date.getDate() - i);
-    price += (Math.random() * 4 - 2); // small daily fluctuation
-    data.push({
-      date: date.toISOString().split('T')[0],
-      price: price.toFixed(2)
-    });
-  }
-
-  return data;
-}
-
-// Fetch stock details (mock)
+// Fetch stock data from Alpha Vantage API
 async function fetchStockData(symbol) {
   showLoading();
-  await delay(500);
-  hideLoading();
-  return generateRandomStockData(symbol);
+  
+  try {
+    // In a real implementation, we would fetch from the API
+    // Since we're using a demo key with limited requests, we'll use mock data for demonstration
+    // const response = await fetch(`${BASE_URL}?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=${API_KEY}`);
+    // const data = await response.json();
+    
+    // For demonstration purposes, we're using mock data
+    const data = generateRandomStockData(symbol);
+    
+    // Simulate network delay
+    await new Promise(resolve => setTimeout(resolve, 800));
+    
+    hideLoading();
+    return data;
+  } catch (error) {
+    hideLoading();
+    showNotification('Error fetching stock data. Please try again.', 'error');
+    console.error('Error fetching stock data:', error);
+    return null;
+  }
 }
 
-// Fetch historical data (mock)
-async function fetchHistoricalData(symbol) {
+// Fetch historical data for a stock
+async function fetchHistoricalData(symbol, timeframe = 'monthly') {
   showLoading();
-  await delay(500);
-  hideLoading();
-  return generateRandomStockData(symbol).historicalData;
+  
+  try {
+    // In a real implementation, we would fetch from the API
+    // const response = await fetch(`${BASE_URL}?function=TIME_SERIES_${timeframe.toUpperCase()}&symbol=${symbol}&apikey=${API_KEY}`);
+    // const data = await response.json();
+    
+    // For demonstration purposes, we're using mock data
+    const data = generateRandomStockData(symbol);
+    
+    // Simulate network delay
+    await new Promise(resolve => setTimeout(resolve, 800));
+    
+    hideLoading();
+    return data.historicalData;
+  } catch (error) {
+    hideLoading();
+    showNotification('Error fetching historical data. Please try again.', 'error');
+    console.error('Error fetching historical data:', error);
+    return [];
+  }
 }
 
-// Return trending stocks (mock)
+// Fetch trending stocks from the API
 async function fetchTrendingStocks() {
-  await delay(300);
-  return trendingStocks;
+  try {
+    // In a real implementation, we would fetch from the API
+    // const response = await fetch(`${BASE_URL}?function=TOP_GAINERS_LOSERS&apikey=${API_KEY}`);
+    // const data = await response.json();
+    
+    // For demonstration purposes, we're using mock data
+    const trendingStocks = getTrendingStocks();
+    
+    // Simulate network delay
+    await new Promise(resolve => setTimeout(resolve, 500));
+    
+    return trendingStocks;
+  } catch (error) {
+    showNotification('Error fetching trending stocks. Please try again.', 'error');
+    console.error('Error fetching trending stocks:', error);
+    return [];
+  }
 }
 
-// Search stocks (mock)
+// Search for a stock by symbol or name
 async function searchStock(query) {
   showLoading();
-  await delay(300);
-  hideLoading();
-  return trendingStocks.filter(stock =>
-    stock.symbol.toLowerCase().includes(query.toLowerCase()) ||
-    stock.name.toLowerCase().includes(query.toLowerCase())
-  );
-}
-
-// Utility delay function
-function delay(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
+  
+  try {
+    // In a real implementation, we would fetch from the API
+    // const response = await fetch(`${BASE_URL}?function=SYMBOL_SEARCH&keywords=${query}&apikey=${API_KEY}`);
+    // const data = await response.json();
+    
+    // For demonstration purposes, we're using mock data
+    const trendingStocks = getTrendingStocks();
+    const results = trendingStocks.filter(stock => 
+      stock.symbol.toLowerCase().includes(query.toLowerCase()) || 
+      stock.name.toLowerCase().includes(query.toLowerCase())
+    );
+    
+    // Simulate network delay
+    await new Promise(resolve => setTimeout(resolve, 500));
+    
+    hideLoading();
+    return results;
+  } catch (error) {
+    hideLoading();
+    showNotification('Error searching for stocks. Please try again.', 'error');
+    console.error('Error searching for stocks:', error);
+    return [];
+  }
 }
