@@ -6,7 +6,7 @@ Responsive Stock Tracker Dashboard
 
 ## 🌐 Live Demo & Repository
 
-- 🔗 **Live Site**: [https://your-live-link.com](https://your-live-link.com)  
+- 🔗 **Live Site**: [https://your-live-link.com]https://grew-eight.vercel.app)  
 - 🛠 **GitHub Repo**: [https://github.com/your-username/stock-tracker-dashboard](https://github.com/your-username/stock-tracker-dashboard)
 
 ---
@@ -14,7 +14,6 @@ Responsive Stock Tracker Dashboard
 ## 📌 Table of Contents
 
 - [Features](#-features)
-- [Screenshots](#-screenshots)
 - [User Stories](#-user-stories)
 - [Tech Stack](#-tech-stack)
 - [Project Structure](#-project-structure)
@@ -22,8 +21,7 @@ Responsive Stock Tracker Dashboard
 - [API Key Setup](#-api-key-setup)
 - [Roadmap](#-roadmap)
 - [Resources](#-resources)
-- [License](#-license)
-- [Contact](#-contact)
+
 
 ---
 
