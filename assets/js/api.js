@@ -4,8 +4,8 @@
  */
 
 // Mock API key (in a real app, this would be securely stored)
-const API_KEY = 'd105hehr01qhkqr80s5gd105hehr01qhkqr80s60';
-const BASE_URL = 'https://finnhub.io/api/v1';
+const API_KEY = '21ae0f3471f4b5be594316f25ba7f937';
+const BASE_URL = 'https://api.marketstack.com/v2';
 
 // Fetch stock data from Alpha Vantage API
 async function fetchStockData(symbol) {
