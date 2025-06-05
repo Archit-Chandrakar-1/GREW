@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GREW - Stock Tracker Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-DhZ-Jfxm.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo-container">
+        <h1><a href="/" class="home-link">GREW</a></h1>
+        <p class="tagline">Track. Analyze. Grow.</p>
+      </div>
+      <div class="search-container">
+        <input type="text" id="stockSearch" placeholder="Search stock symbol (e.g., RELIANCE, TCS)">
+        <button id="searchBtn">Search</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="trending-section">
+        <h2>Trending Stocks</h2>
+        <div class="dropdown-container">
+          <select id="trendingStocks">
+            <option value="">Select a trending stock</option>
+            <!-- Options will be populated dynamically -->
+          </select>
+        </div>
+      </section>
+
+      <section class="current-stock" id="currentStock">
+        <div class="stock-info-placeholder">
+          <p>Search for a stock symbol or select a trending stock to view details</p>
+        </div>
+      </section>
+
+      <section class="chart-section">
+        <div class="chart-container">
+          <canvas id="stockChart"></canvas>
+        </div>
+      </section>
+
+      <section class="comparison-section">
+        <h2>Stock Comparison</h2>
+        <div class="comparison-table-container">
+          <table id="comparisonTable">
+            <thead>
+              <tr>
+                <th>Symbol</th>
+                <th>Price (₹)</th>
+                <th>Change (%)</th>
+                <th>Volume</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="comparisonTableBody">
+              <!-- Comparison data will be populated dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 GREW Stock Tracker. All rights reserved.</p>
+      <p class="disclaimer">Data provided by Alpha Vantage API. For educational purposes only.</p>
+    </footer>
+  </div>
+
+  <div id="loading" class="loading-overlay">
+    <div class="loading-spinner"></div>
+  </div>
+
+  <div id="notification" class="notification"></div>
+
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/chart.js"></script>
+  <script src="assets/js/stocks.js"></script>
+  <script src="assets/js/ui.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
