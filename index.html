@@ -1,87 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GREW - Stock Tracker Dashboard</title>
-  <link rel="stylesheet" href="assets/css/styles.css">
-  <link rel="stylesheet" href="assets/css/responsive.css">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Tracker Dashboard</title>
+
+    <!-- Link to external CSS file for styling -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
+
+    <!-- Header Section -->
     <header>
-      <div class="logo-container">
-        <h1><a href="/" class="home-link">GREW</a></h1>
-        <p class="tagline">Track. Analyze. Grow.</p>
-      </div>
-      <div class="search-container">
-        <input type="text" id="stockSearch" placeholder="Search stock symbol (e.g., RELIANCE, TCS)">
-        <button id="searchBtn">Search</button>
-      </div>
+        <h1>GREW </h1>
+        <h3>Stock Tracker Dashboard</h3>
     </header>
 
+    <!-- Main Content Section -->
     <main>
-      <section class="trending-section">
-        <h2>Trending Stocks</h2>
-        <div class="dropdown-container">
-          <select id="trendingStocks">
-            <option value="">Select a trending stock</option>
-            <!-- Options will be populated dynamically -->
-          </select>
-        </div>
-      </section>
 
-      <section class="current-stock" id="currentStock">
-        <div class="stock-info-placeholder">
-          <p>Search for a stock symbol or select a trending stock to view details</p>
-        </div>
-      </section>
+        <!-- Trending Stocks Dropdown Section -->
+        <section class="dropdown-section">
+            <h2>Select Trending Stock</h2>
+            <!-- Dropdown menu will be populated dynamically via JS -->
+            <select id="stockDropdown">
+                <!-- Options will be inserted here -->
+            </select>
+            <!-- Button to load data for the selected trending stock -->
+            <button id="loadStockButton">Load Stock</button>
+        </section>
 
-      <section class="chart-section">
-        <div class="chart-container">
-          <canvas id="stockChart"></canvas>
-        </div>
-      </section>
+        <!-- Stock Search Section -->
+        <section class="search-section">
+            <!-- Input to search stock by symbol (e.g., AAPL) -->
+            <input type="text" id="stockSearch" placeholder="Search for a stock (e.g., AAPL)">
+            <!-- Button to trigger stock search -->
+            <button id="searchButton">Search</button>
+        </section>
 
-      <section class="comparison-section">
-        <h2>Stock Comparison</h2>
-        <div class="comparison-table-container">
-          <table id="comparisonTable">
-            <thead>
-              <tr>
-                <th>Symbol</th>
-                <th>Price (₹)</th>
-                <th>Change (%)</th>
-                <th>Volume</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody id="comparisonTableBody">
-              <!-- Comparison data will be populated dynamically -->
-            </tbody>
-          </table>
-        </div>
-      </section>
+        <!-- Stock Information Display Section -->
+        <section class="stock-info">
+            <h2>Stock Information</h2>
+            <!-- Stock details (price, volume, etc.) will be shown here -->
+            <div id="stockDetails"></div>
+        </section>
+
+        <!-- Stock Price Graph Section -->
+        <section class="graph-section">
+            <h2>Stock Price Graph</h2>
+            <!-- Chart.js will render the graph inside this canvas -->
+            <canvas id="stockChart"></canvas>
+        </section>
+
+        <!-- Stock Comparison Table Section -->
+        <section class="stock-table">
+            <h2>Compare Stocks</h2>
+            <!-- Table to compare multiple stocks -->
+            <table id="stockTable">
+                <thead>
+                    <tr>
+                        <th>Stock</th>
+                        <th>Price</th>
+                        <th>Change</th>
+                        <th>Volume</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Stock rows will be dynamically inserted here -->
+                </tbody>
+            </table>
+        </section>
+
     </main>
 
-    <footer>
-      <p>&copy; 2025 GREW Stock Tracker. All rights reserved.</p>
-      <p class="disclaimer">Data provided by Alpha Vantage API. For educational purposes only.</p>
-    </footer>
-  </div>
+    <!-- Load Chart.js Library for graph rendering -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-  <div id="loading" class="loading-overlay">
-    <div class="loading-spinner"></div>
-  </div>
-
-  <div id="notification" class="notification"></div>
-
-  <script src="assets/js/utils.js"></script>
-  <script src="assets/js/api.js"></script>
-  <script src="assets/js/chart.js"></script>
-  <script src="assets/js/stocks.js"></script>
-  <script src="assets/js/ui.js"></script>
-  <script src="assets/js/main.js"></script>
+    <!-- Link to external JavaScript file -->
+    <script src="script.js"></script>
 </body>
 </html>
